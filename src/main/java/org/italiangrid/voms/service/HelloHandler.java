@@ -30,7 +30,7 @@ public class HelloHandler extends AbstractHandler {
     response.setContentType(MimeTypes.TEXT_PLAIN);
     response.setStatus(HttpServletResponse.SC_OK);
     
-    response.getWriter().println("Hi " + authenticatedUserDn);
+    response.getWriter().print("Hi " + authenticatedUserDn);
     
     baseRequest.setHandled(true);
   }

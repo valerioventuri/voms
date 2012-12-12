@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>voms-service</name>
-  
+
   <url>http://italiangrid.github.com/voms/</url>
 
   <properties>
@@ -18,10 +18,10 @@
     <assembly.doc.dir>/usr/share/doc/${project.name}</assembly.doc.dir>
     <assembly.javadoc.dir>/usr/share/javadoc/${project.name}</assembly.javadoc.dir>
     <junitVersion>4.10</junitVersion>
-    
+
     <vomsJavaApiVersion>3.0-SNAPSHOT</vomsJavaApiVersion>
     <httpsUtilsVersion>0.5-SNAPSHOT</httpsUtilsVersion>
-    
+
     <slf4jVersion>1.7.1</slf4jVersion>
     <logbackVersion>1.0.7</logbackVersion>
   </properties>
@@ -67,19 +67,11 @@
         </configuration>
       </plugin>
 
-      <!--  Assembly plugin: uncomment when you need it!
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <finalName>${project.name}</finalName>
-          <descriptors>
-            <descriptor>${basedir}/src/main/assembly/voms-service.xml</descriptor>
-          </descriptors>
-        </configuration>
-      </plugin>
-       -->
-       
+      <!-- Assembly plugin: uncomment when you need it! <plugin> <groupId>org.apache.maven.plugins</groupId> 
+        <artifactId>maven-assembly-plugin</artifactId> <configuration> <finalName>${project.name}</finalName> 
+        <descriptors> <descriptor>${basedir}/src/main/assembly/voms-service.xml</descriptor> 
+        </descriptors> </configuration> </plugin> -->
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -100,37 +92,46 @@
       </plugin>
     </plugins>
   </build>
-  
+
   <dependencies>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junitVersion}</version>
       <scope>test</scope>
     </dependency>
-    
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.8.4</version>
+      <scope>test</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.italiangrid</groupId>
       <artifactId>https-utils</artifactId>
       <version>${httpsUtilsVersion}</version>
     </dependency>
-    
+
     <dependency>
       <groupId>org.italiangrid</groupId>
       <artifactId>voms-api-java</artifactId>
       <version>${vomsJavaApiVersion}</version>
     </dependency>
-    
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>${slf4jVersion}</version>
     </dependency>
-    
+
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
       <version>${logbackVersion}</version>
     </dependency>
+    
   </dependencies>
+
 </project>
