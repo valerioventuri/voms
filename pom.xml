@@ -20,7 +20,7 @@
     <junitVersion>4.10</junitVersion>
 
     <vomsJavaApiVersion>3.0-SNAPSHOT</vomsJavaApiVersion>
-    <httpsUtilsVersion>0.5-SNAPSHOT</httpsUtilsVersion>
+    <httpsUtilsVersion>0.2-SNAPSHOT</httpsUtilsVersion>
 
     <slf4jVersion>1.7.1</slf4jVersion>
     <logbackVersion>1.0.7</logbackVersion>

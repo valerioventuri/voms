@@ -6,19 +6,15 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
 import org.eclipse.jetty.http.MimeTypes;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
-import org.glite.security.util.DNImpl;
 import org.italiangrid.utils.voms.VOMSSecurityContext;
 import org.junit.Test;
 
@@ -30,7 +26,7 @@ public class HelloHandlerTest {
     // a mock security context
     VOMSSecurityContext mockedVOMSecurityContext = mock(VOMSSecurityContext.class);
     VOMSSecurityContext.setCurrentContext(mockedVOMSecurityContext);
-    when(mockedVOMSecurityContext.getClientDN()).thenReturn(new DNImpl("CN=Paolino Paperino"));
+    when(mockedVOMSecurityContext.getClientX500Name()).thenReturn("CN=Paolino Paperino");
 
     // a mock base request
     Request mockedBaseRequest = mock(Request.class);

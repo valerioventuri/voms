@@ -25,7 +25,7 @@ public class HelloHandler extends AbstractHandler {
     
     VOMSSecurityContext securityContext = VOMSSecurityContext.getCurrentContext();
     
-    String authenticatedUserDn = securityContext.getClientDN().getRFCDN();
+    String authenticatedUserDn = securityContext.getClientX500Name();
     
     response.setContentType(MimeTypes.TEXT_PLAIN);
     response.setStatus(HttpServletResponse.SC_OK);
