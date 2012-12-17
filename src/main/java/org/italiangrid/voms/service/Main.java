@@ -68,7 +68,7 @@ public class Main {
     sslOptions.setCertificateFile(settings.getHostCert());
     sslOptions.setKeyFile(settings.getHostKey());
     sslOptions.setTrustStoreDirectory(settings.getTrustStore());
-    sslOptions.setTrustStoreRefreshIntervalInMsec(60000L);
+    sslOptions.setTrustStoreRefreshIntervalInMsec(settings.getTrustStoreRefreshInterval());
     sslOptions.setNeedClientAuth(true);
 
     server = ServerFactory.newServer(settings.getHost(), settings.getPort(), sslOptions);

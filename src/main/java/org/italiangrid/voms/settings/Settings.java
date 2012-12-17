@@ -35,4 +35,10 @@ public interface Settings {
    */
   String getTrustStore();
 
+  /**
+   * Get the time after which the service will reload the contents of the 
+   * truststore directory.
+   */
+  long getTrustStoreRefreshInterval();
+  
 }

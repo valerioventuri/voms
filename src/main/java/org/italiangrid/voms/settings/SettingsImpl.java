@@ -41,6 +41,12 @@ public enum SettingsImpl implements Settings {
   private String trustStore;
   
   /**
+   * The interval for reloading trusted materials. 
+   * 
+   */
+  private long trustStoreRefreshInterval;
+  
+  /**
    * Default constructor. Load the config and set settings field.
    * 
    */
@@ -55,6 +61,7 @@ public enum SettingsImpl implements Settings {
     hostCert = config.getString("hostcert");
     hostKey = config.getString("hostkey");
     trustStore = config.getString("truststore");
+    trustStoreRefreshInterval = config.getLong("truststore-refresh-interval");
   }
 
   /**
@@ -97,6 +104,13 @@ public enum SettingsImpl implements Settings {
    */
   public int getShutdownPort() {
     return shutdownPort;
+  }
+
+  /**
+   * @return the trustStoreRefreshInterval
+   */
+  public long getTrustStoreRefreshInterval() {
+    return trustStoreRefreshInterval;
   }
 
 }
