@@ -131,7 +131,12 @@
       <artifactId>logback-core</artifactId>
       <version>${logbackVersion}</version>
     </dependency>
-    
+
+    <dependency>
+      <groupId>com.typesafe</groupId>
+      <artifactId>config</artifactId>
+      <version>1.0.0</version>
+    </dependency>
   </dependencies>
 
 </project>

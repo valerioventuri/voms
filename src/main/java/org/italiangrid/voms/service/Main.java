@@ -8,6 +8,8 @@ import org.italiangrid.utils.https.JettyShutdownTask;
 import org.italiangrid.utils.https.SSLOptions;
 import org.italiangrid.utils.https.ServerFactory;
 import org.italiangrid.utils.voms.VOMSSecurityContextHandler;
+import org.italiangrid.voms.settings.SettingsImpl;
+import org.italiangrid.voms.settings.Settings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +26,11 @@ public class Main {
    */
   static Logger log = LoggerFactory.getLogger(Main.class.getName());
 
+  /**
+   * 
+   */
+  private static Settings settings = SettingsImpl.INSTANCE;
+  
   /**
    * The Jetty {@link Server} object.
    */
@@ -58,13 +65,13 @@ public class Main {
   protected static void configureJettyServer() {
 
     SSLOptions sslOptions = new SSLOptions();
-    sslOptions.setCertificateFile(ConfigurationDefaults.DEFAULT_CERT);
-    sslOptions.setKeyFile(ConfigurationDefaults.DEFAULT_KEY);
-    sslOptions.setTrustStoreDirectory(ConfigurationDefaults.DEFAULT_TRUSTSTORE_DIR);
-    sslOptions.setTrustStoreRefreshIntervalInMsec(ConfigurationDefaults.DEFAULT_TRUSTSTORE_REFRESH_INTERVAL);
+    sslOptions.setCertificateFile(settings.getHostCert());
+    sslOptions.setKeyFile(settings.getHostKey());
+    sslOptions.setTrustStoreDirectory(settings.getTrustStore());
+    sslOptions.setTrustStoreRefreshIntervalInMsec(60000L);
     sslOptions.setNeedClientAuth(true);
 
-    server = ServerFactory.newServer(ConfigurationDefaults.DEFAULT_HOST, ConfigurationDefaults.DEFAULT_PORT, sslOptions);
+    server = ServerFactory.newServer(settings.getHost(), settings.getPort(), sslOptions);
   }
 
   /**
@@ -86,8 +93,8 @@ public class Main {
    */
   protected static void configureShutdownService() {
 
-    shutdownService = new JettyAdminService(ConfigurationDefaults.DEFAULT_HOST, 
-        Integer.parseInt(ConfigurationDefaults.DEFAULT_SHUTDOWN_PORT), "pwd");
+    shutdownService = new JettyAdminService(settings.getHost(), 
+        settings.getShutdownPort(), "pwd");
     shutdownService.registerShutdownTask(new JettyShutdownTask(server));
   }
 
