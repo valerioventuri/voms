@@ -1,4 +1,20 @@
-# This is internal documentaion
+This is internal documentation, meant to be used by developers
+
+The configuration module is based on the [Typesafe config library](https://github.com/typesafehub/config).
+
+The format used for the configuration file is the HOCON format ( “Human-Optimized Config Object Notation”),
+which might looks like properties but allow for using stanzas  and other amenities, see 
+the [HOCON spec](https://github.com/typesafehub/config/blob/master/HOCON.md).
+
+Default values goes into a reference.conf file in the classpath, now under src/main/resources. 
+The reference.conf file is also used to validate the main configuration file.
+
+An example configuration file is in src/main/resources. The configuration can either be on the classpath
+or specified by the system property config.file.
+
+While developing, just edit the application.conf file under src/main/resources and launch within eclipse. 
+Or, to prevent accidentally pushing changes to it, copy it somehwere else and pass the location in the config.file
+system property.
 
 ## Use the Settings object
 
@@ -21,8 +37,16 @@ First add a default to the reference.conf resource
 truststore-refresh-interval = 60000
 ```
 
+and the documentaion to the application.conf resource
 
-Add the getter to the Settings interface
+```bash
+# The interval at which the service will refresh the trustore, loading 
+# new certification authorities or revocations lists. Defaults to 60000
+# milliseconds
+#truststore-refresh-interval = 60000
+```
+
+The add the getter to the Settings interface
 
 ```java
 /**
@@ -60,4 +84,3 @@ public long getTrustStoreRefreshInterval() {
   return trustStoreRefreshInterval;
 }
 ```
-
