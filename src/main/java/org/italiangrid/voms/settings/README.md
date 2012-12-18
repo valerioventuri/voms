@@ -1,5 +1,10 @@
 This is internal documentation, meant to be used by developers
 
+# Configuration module for VOMS
+
+This module loads the service configuration, and provides methods to other modules for accessing configuration
+values.
+
 The configuration module is based on the [Typesafe config library](https://github.com/typesafehub/config).
 
 The format used for the configuration file is the HOCON format ( “Human-Optimized Config Object Notation”),
@@ -11,6 +16,10 @@ The reference.conf file is also used to validate the main configuration file.
 
 An example configuration file is in src/main/resources. The configuration can either be on the classpath
 or specified by the system property config.file.
+
+The Settings interface provides getters to the configurations values. The SettingsImpl implememts the interface,
+and is a Singleton implemented using an ENUM. See Joshua Bloks in Effective Java 'a single-element enum type is 
+the best way to implement a singleton.'
 
 While developing, just edit the application.conf file under src/main/resources and launch within eclipse. 
 Or, to prevent accidentally pushing changes to it, copy it somehwere else and pass the location in the config.file
