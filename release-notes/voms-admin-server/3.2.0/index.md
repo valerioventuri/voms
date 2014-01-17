@@ -51,7 +51,15 @@ Follow the instructions in the VOMS [System Administrator Guide]({{site.baseurl}
 
 ### Known issues
 
-None at the moment
+#### [The database upgrade fails if the VOMS database was created with VOMS Admin version 2.5.3][known-issue]
 
+**Workaround**: change manually the database version number in the VOMS
+database for all VOs being upgraded, issuing the following command  *before* 
+starting the upgrade procedure:
+
+```
+update version set admin_version = '2.5.5';
+```
 [voms-website]: http://italiangrid.github.io/voms
 [voms-admin-guide]: {{site.baseurl}}/documentation/voms-admin-guide/3.2.0
+[known-issue]: https://ggus.eu/ws/ticket_info.php?ticket=100262
